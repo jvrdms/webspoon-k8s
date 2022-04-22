@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webspoon
+  # namespace: webspoon
+  labels:
+    run: webspoon
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: webspoon
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        run: webspoon
+    spec:
+      containers:
+        - env:
+            - name: JAVA_OPTS
+              value: -Xms1024m -Xmx2048m
+          image: hiromuhota/webspoon
+          imagePullPolicy: IfNotPresent
+          name: webspoon
+          ports:
+            - containerPort: 8080
+          resources: {}
+          volumeMounts:
+            - mountPath: /home/tomcat/.kettle
+              name: kettle-pvc
+            - mountPath: /home/tomcat/.pentaho
+              name: pentaho-pvc
+            - mountPath: /usr/local/tomcat/webapps/spoon/WEB-INF/web.xml
+              name: webspoon-config-cm
+              subPath: web.xml
+            # - mountPath: /usr/local/tomcat/conf/catalina.policy
+            #   name: webspoon-config-cm
+            #   subPath: catalina.policy
+            - mountPath: /usr/local/tomcat/webapps/spoon/WEB-INF/spring/security.xml
+              name: webspoon-config-cm
+              subPath: security.xml
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+        - name: kettle-pvc
+          persistentVolumeClaim:
+            claimName: kettle-pvc
+        - name: pentaho-pvc
+          persistentVolumeClaim:
+            claimName: pentaho-pvc
+        - name: webspoon-config-cm
+          configMap:
+            name: webspoon-config-cm
