@@ -2,7 +2,7 @@
 forcked from https://github.com/HiromuHota/webspoon-docker/tree/master/k8s
 
 - Clone this repository.
-- Copy config/security.xml.bak to config/security.xml and edit users/passwords.
+- Copy `config/security.xml.bak` to `config/security.xml` and edit users/passwords.
 - Run this command to create required resources (`ConfigMaps`, `PersistentVolumes`, `Deployment` and `Service`).
 
 ```sh
