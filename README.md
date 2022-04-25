@@ -1,12 +1,15 @@
 # Run webSpoon on Kubernetes
 forcked from https://github.com/HiromuHota/webspoon-docker/tree/master/k8s
 
-Clone this repository and run this command to create required resources (`Deployment` and `Service`).
+- Clone this repository.
+- Copy config/security.xml.bak to config/security.xml and edit users/passwords.
+- Run this command to create required resources (`ConfigMaps`, `PersistentVolumes`, `Deployment` and `Service`).
 
 ```sh
-$ kubectl create -f ./k8s
-deployment.apps/webspoon created
-service/webspoon created
+$ kubectl create cm webspoon-config-cm \
+  --from-file config/web.xml \
+  --from-file config/security.xml
+$ kubectl apply -f .
 ```
 
 Check that webspoon is running.
@@ -43,29 +46,6 @@ Edit `kettle-pvc.yaml` and `pentaho-pvc.yaml`.
 
 # Customize
 
-## Add `web.xml` etc.
-
-Create your own `web.xml` file and run this command to make ConfigMap including the `web.xml`.
-
-```sh
-$ kubectl create configmap webspoon-config-cm --from-file config/web.xml
-```
-
-Then, edit `deployment.yaml` and uncomment this section to mount ConfigMap to containers.
-
-```yaml
-        volumeMounts:
-        ...
-        # - mountPath: /usr/local/tomcat/webapps/spoon/WEB-INF/web.xml
-        #   name: webspoon-config-cm
-        #   subPath: web.xml
-        ...
-      volumes:
-      # - name: webspoon-config-cm
-      #   configMap:
-      #     name: webspoon-config-cm
-```
-
 File locations by default
 
 | File | Mount target in webSpoon pod |
@@ -77,7 +57,7 @@ File locations by default
 # Tear down
 
 ```sh
-$ kubectl delete -f ./k8s
+$ kubectl delete -f .
 # If you created ConfigMap
 $ kubectl delete configmap webspoon-config-cm
 ```
