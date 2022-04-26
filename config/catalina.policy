@@ -16,6 +16,16 @@ grant
   permission java.io.FilePermission "${catalina.home}/.", "read";
   permission java.io.FilePermission "repositories.xml", "read";
 
+  // Cassandra steps not drawn when the custom security manager is enabled #3 
+  // https://github.com/HiromuHota/webspoon-docker/issues/3#issuecomment-358841639
+  permission java.io.FilePermission "/usr/share/fonts/-", "read";
+  permission java.io.FilePermission "/var/cache/fontconfig", "read";
+  permission java.io.FilePermission "${user.home}/.cache/fontconfig", "read";
+  permission java.io.FilePermission "${user.home}/.fontconfig", "read";
+  permission java.io.FilePermission "/usr/X11R6/lib/X11/fonts/TrueType", "read";
+  permission java.io.FilePermission "/usr/X11R6/lib/X11/fonts/truetype", "read";
+  permission java.io.FilePermission "/usr/X11R6/lib/X11/fonts/tt", "read";
+
   // For SpoonGit
   permission java.io.FilePermission "${user.home}/.gitconfig", "read";
   permission java.io.FilePermission "${user.home}/.gitignore_global", "read";

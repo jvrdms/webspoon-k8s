@@ -21,6 +21,8 @@ spec:
         - env:
             - name: JAVA_OPTS
               value: -Xms1024m -Xmx2048m
+            - name: CATALINA_OPTS
+              value: "-Djava.security.manager=org.pentaho.di.security.WebSpoonSecurityManager -Djava.security.policy=/usr/local/tomcat/conf/catalina.policy"
           image: hiromuhota/webspoon
           imagePullPolicy: IfNotPresent
           name: webspoon
@@ -35,9 +37,9 @@ spec:
             - mountPath: /usr/local/tomcat/webapps/spoon/WEB-INF/web.xml
               name: webspoon-config-cm
               subPath: web.xml
-            # - mountPath: /usr/local/tomcat/conf/catalina.policy
-            #   name: webspoon-config-cm
-            #   subPath: catalina.policy
+            - mountPath: /usr/local/tomcat/conf/catalina.policy
+              name: webspoon-config-cm
+              subPath: catalina.policy
             - mountPath: /usr/local/tomcat/webapps/spoon/WEB-INF/spring/security.xml
               name: webspoon-config-cm
               subPath: security.xml

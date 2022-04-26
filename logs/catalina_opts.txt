@@ -1,0 +1,8 @@
+13:27 [javier@ArchI webspoon-k8s] (main * u=)$ kube logs webspoon-69db79765c-dp8t6 |grep pentaho
+26-Apr-2022 10:58:09.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.security.manager=org.pentaho.di.security.WebSpoonSecurityManager
+26-Apr-2022 10:58:17.425 INFO [main] org.pentaho.di.ui.spoon.WebSpoonServletContextListener.contextInitialized Current directory: /usr/local/tomcat
+26-Apr-2022 10:58:22.201 INFO [features-3-thread-1] org.pentaho.caching.impl.PentahoCacheManagerFactory$RegistrationHandler$1.onSuccess New Caching Service registered
+2022-04-26 10:58:26.398:INFO:oejsh.ContextHandler:features-3-thread-1: Stopped HttpServiceContext{httpContext=DefaultHttpContext [bundle=pentaho-i18n-webservice-bundle [176], contextID=default]}
+
+2022/04/26 11:00:26 - GUIResource - ERROR (version 9.0.0.0-423-22, build 9.0.0.0-423-22 from 2020-07-27 09.02.13 by jenkins) : Unable to load image file [Cassandrain.svg] for plugin CassandraInput/Cassandra input{class org.pentaho.di.core.plugins.StepPluginType}
+1
