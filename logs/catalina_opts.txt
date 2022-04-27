@@ -6,3 +6,17 @@
 
 2022/04/26 11:00:26 - GUIResource - ERROR (version 9.0.0.0-423-22, build 9.0.0.0-423-22 from 2020-07-27 09.02.13 by jenkins) : Unable to load image file [Cassandrain.svg] for plugin CassandraInput/Cassandra input{class org.pentaho.di.core.plugins.StepPluginType}
 1
+
+-fonts
+OTF: curl -L https://www.cufonfonts.com/download/redirect/myriad-pro -o myriad-pro.zip
+WOFF: curl https://www.cufonfonts.com/download/web-font/myriad-pro -o myriad-pro-webfont.zip
+
+-extract to 
+mkdir -p ~/.local/share/fonts
+unzip myriad-pro.zip -d ~/.local/share/fonts/otf
+unzip myriad-pro-webfont.zip -d ~/.local/share/fonts/woff
+
+fc-list
+fc-cache -fv
+
+curl https://fontsfree.net//wp-content/fonts/basic/sans-serif/FontsFree-Net-MYRIADPRO-REGULAR.ttf -O
