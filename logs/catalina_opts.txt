@@ -20,3 +20,6 @@ fc-list
 fc-cache -fv
 
 curl https://fontsfree.net//wp-content/fonts/basic/sans-serif/FontsFree-Net-MYRIADPRO-REGULAR.ttf -O
+
+
+https://github.com/HiromuHota/pentaho-kettle/wiki/Admin%3A-Configuration-Management
