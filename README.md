@@ -1,5 +1,5 @@
 # Run webSpoon on Kubernetes
-forcked from https://github.com/HiromuHota/webspoon-docker/tree/master/k8s
+[![lastest-release](https://badgen.net/badge/Fork/webspoon-docker/red?icon=git)][fork]
 
 - Clone this repository.
 - Copy `config/security.xml.bak` to `config/security.xml` and edit users/passwords.
@@ -61,3 +61,5 @@ $ kubectl delete -f .
 # If you created ConfigMap
 $ kubectl delete configmap webspoon-config-cm
 ```
+
+[fork]:https://github.com/HiromuHota/webspoon-docker/tree/master/k8s
