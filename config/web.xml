@@ -8,8 +8,7 @@
     - Location of the XML file that defines the root application context
     - Applied by ContextLoaderListener.
     -->
-  <!-- Uncomment the followings to enable login page for webSpoon
-  -->
+  <!-- Uncomment the followings to enable login page for webSpoon -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
@@ -29,8 +28,7 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  <!-- END login page for webSpoon
-  -->
+  <!-- END login page for webSpoon -->
 
   <context-param>
     <param-name>org.eclipse.rap.applicationConfiguration</param-name>

@@ -28,28 +28,37 @@ spec:
             - containerPort: 8080
           resources: {}
           volumeMounts:
-            - mountPath: /home/tomcat/.kettle
-              name: kettle-pvc
-            - mountPath: /home/tomcat/.pentaho
-              name: pentaho-pvc
-            - mountPath: /usr/local/tomcat/webapps/spoon/WEB-INF/web.xml
-              name: webspoon-config-cm
+            - name: webspoon-pvc
+              mountPath: /home/tomcat/
+            - name: webspoon-config-cm
+              mountPath: /usr/local/tomcat/webapps/spoon/WEB-INF/web.xml
               subPath: web.xml
-            # - mountPath: /usr/local/tomcat/conf/catalina.policy
-            #   name: webspoon-config-cm
-            #   subPath: catalina.policy
-            - mountPath: /usr/local/tomcat/webapps/spoon/WEB-INF/spring/security.xml
-              name: webspoon-config-cm
+            - name: webspoon-secret
+              mountPath: /usr/local/tomcat/webapps/spoon/WEB-INF/spring/security.xml
               subPath: security.xml
+              readOnly: true
+            # - mountPath: /home/tomcat/.kettle
+            #   name: kettle-pvc
+            # - mountPath: /home/tomcat/.pentaho
+            #   name: pentaho-pvc
+            # - name: webspoon-config-cm
+            #   mountPath: /usr/local/tomcat/conf/catalina.policy
+            #   subPath: catalina.policy
       restartPolicy: Always
       serviceAccountName: ""
       volumes:
-        - name: kettle-pvc
+        - name: webspoon-pvc
           persistentVolumeClaim:
-            claimName: kettle-pvc
-        - name: pentaho-pvc
-          persistentVolumeClaim:
-            claimName: pentaho-pvc
+            claimName: webspoon-pvc
         - name: webspoon-config-cm
           configMap:
             name: webspoon-config-cm
+        - name: webspoon-secret
+          secret:
+            secretName: webspoon-secret
+        # - name: kettle-pvc
+        #   persistentVolumeClaim:
+        #     claimName: kettle-pvc
+        # - name: pentaho-pvc
+        #   persistentVolumeClaim:
+        #     claimName: pentaho-pvc
