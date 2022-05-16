@@ -3,7 +3,7 @@
 
 - Clone this repository.
 - Copy `config/security.xml.bak` to `config/security.xml` and edit users/passwords.
-- Run the following command to create required resources (`ConfigMaps`, `Volumes`, `Deployment` and `Service`).
+- Run the following command to create required resources.
 
 ```sh
 $ ./create_all.sh
@@ -17,7 +17,7 @@ NAME                        READY   STATUS              RESTARTS   AGE
 webspoon-78767c7f57-b9fzd   1/1     Running             0          5m7s
 ```
 
-Do port forwarding of `8080` port of the service to local machine.
+If ingress is not installed do port forwarding of `8080` port of the service to local machine.
 
 ```sh
 $ kubectl port-forward service/webspoon 8080:8080 &
@@ -32,9 +32,9 @@ http://localhost:8080
 # Shared `~/.kettle` and `~/.pentaho` directory
 
 Pods share `~/.kettle` and `~/.pentaho` directory as PersistentVolumeClaim (PVC).
-If you want to deploy these PVCs to a Kubernetes cluster which only supports `ReadWriteOnce`, you can configure YAML files.
+If you want to deploy this PVC to a Kubernetes cluster which only supports `ReadWriteOnce`, you can configure YAML files.
 
-Edit `kettle-pvc.yaml` and `pentaho-pvc.yaml`.
+Edit `pvc.yaml`.
 
 ```yaml
   # - ReadWriteMany # Comment out
