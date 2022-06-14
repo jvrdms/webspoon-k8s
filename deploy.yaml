@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webspoon
-  # namespace: webspoon
+  namespace: webspoon
   labels:
     run: webspoon
 spec:
@@ -37,13 +37,6 @@ spec:
               mountPath: /usr/local/tomcat/webapps/spoon/WEB-INF/spring/security.xml
               subPath: security.xml
               readOnly: true
-            # - mountPath: /home/tomcat/.kettle
-            #   name: kettle-pvc
-            # - mountPath: /home/tomcat/.pentaho
-            #   name: pentaho-pvc
-            # - name: webspoon-config-cm
-            #   mountPath: /usr/local/tomcat/conf/catalina.policy
-            #   subPath: catalina.policy
       restartPolicy: Always
       serviceAccountName: ""
       volumes:
@@ -56,9 +49,3 @@ spec:
         - name: webspoon-secret
           secret:
             secretName: webspoon-secret
-        # - name: kettle-pvc
-        #   persistentVolumeClaim:
-        #     claimName: kettle-pvc
-        # - name: pentaho-pvc
-        #   persistentVolumeClaim:
-        #     claimName: pentaho-pvc

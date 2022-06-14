@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: webspoon-pvc
-  # namespace: webspoon
+  namespace: webspoon
 spec:
   accessModes:
     #- ReadWriteMany
@@ -11,29 +11,3 @@ spec:
   resources:
     requests:
       storage: 250Mi
-# ---
-# kind: PersistentVolumeClaim
-# apiVersion: v1
-# metadata:
-#   name: kettle-pvc
-#   # namespace: webspoon
-# spec:
-#   accessModes:
-#     #- ReadWriteMany
-#     - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: 100Mi
-# ---
-# kind: PersistentVolumeClaim
-# apiVersion: v1
-# metadata:
-#   name: pentaho-pvc
-#   # namespace: webspoon
-# spec:
-#   accessModes:
-#     #- ReadWriteMany
-#     - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: 100Mi
