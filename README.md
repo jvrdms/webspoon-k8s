@@ -29,7 +29,7 @@ While port forwarding, access to the port of local machine.
 http://localhost:8080
 ```
 
-# Shared `~/.kettle` and `~/.pentaho` directory
+## Shared `~/.kettle` and `~/.pentaho` directory
 
 Pods share `~/.kettle` and `~/.pentaho` directory as PersistentVolumeClaim (PVC).
 If you want to deploy this PVC to a Kubernetes cluster which only supports `ReadWriteOnce`, you can configure YAML files.
@@ -41,7 +41,7 @@ Edit `pvc.yaml`.
   - ReadWriteOnce # Uncomment
 ```
 
-# Customize
+## Customize
 
 File locations by default
 
@@ -51,7 +51,7 @@ File locations by default
 | `catalina.policy` | `/usr/local/tomcat/conf/catalina.policy` |
 | `security.xml` | `/usr/local/tomcat/webapps/spoon/WEB-INF/spring/security.xml`|
 
-# Tear down
+## Tear down
 
 ```sh
 $ ./delete_all.sh
