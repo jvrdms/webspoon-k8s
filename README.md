@@ -1,7 +1,6 @@
-# Run webSpoon on Kubernetes
-[![lastest-release](https://badgen.net/badge/Fork/webspoon-docker/red?icon=git)][fork]
-
+# webspoon-k8s
 Run webSpoon on Kubernetes
+[![lastest-release](https://badgen.net/badge/Fork/webspoon-docker/red?icon=git)][fork]
 
 - Clone this repository.
 - Copy `config/security.xml.bak` to `config/security.xml` and edit users/passwords.
